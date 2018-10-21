@@ -1,6 +1,11 @@
 import express from 'express';
 import User from '../model/user';
+import dbConnection from '../util/db_con';
+
 let router = express.Router();
+const database = dbConnection().init();
+dbConnection().test_open(database);
+
 /* GET home page. */
 router.get('/', (req, res, next) => {
 let welcome = [
