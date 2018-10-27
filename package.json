@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js --watch server --exec babel-node",
-    "sequelize:sync": "node util/sequelize/generate/gen.js",
+    "sequelize:sync": "node util/sequelize/generate/gen.js &",
     "test": "test"
   },
   "keywords": [
