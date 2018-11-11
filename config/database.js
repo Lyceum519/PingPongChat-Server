@@ -3,7 +3,7 @@ module.exports = (function () {
     local: { // localhost
       host: 'localhost',
       user: 'root',
-      password: 'wonyeong91',
+      password: 'Pingpong1!!',
       port: 3306,
       database: 'ping_pong_chat'
     },
