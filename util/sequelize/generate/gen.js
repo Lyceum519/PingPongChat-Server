@@ -16,7 +16,7 @@ User.sync({force: true}).then(() => {
 });
 
 Record.sync({force: true}).then(() => {
-  const audioDataPath = 'Black_Ant_realest_year_9.mp3';
+  const audioDataPath = 'static/Black_Ant_realest_year_9.mp3';
   
   return Record.bulkCreate([
     {
