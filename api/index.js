@@ -1,11 +1,26 @@
 import express from 'express';
 import path from 'path';
+import multer from 'multer';
 import User from '../model/user';
 import dbConnection from '../util/db_con';
 import { findAllUser, findAllRecord, findRecordByUsers } from '../util/sequelize/api/find'
 
 let router = express.Router();
 const database = dbConnection().init();
+
+/*
+ file storage
+*/
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, __dirname + '/../uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
+const upload = multer({ storage: storage });
 dbConnection().test_open(database);
 
 /* GET home page. */
@@ -58,5 +73,15 @@ router.get('/records/who', async(req, res, next) => {
   res.sendFile(path.join(__dirname, '../', dbRecord.dataValues.record));
   // res.json(dbRecord);
 })
+
+/*
+  Post record 
+*/
+router.post('/record', upload.any(), async(req, res, next) => {
+  console.log(333, req.files);
+  
+  res.json({"200": "success"});
+})
+
 
 export default router;
