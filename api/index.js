@@ -3,7 +3,12 @@ import path from 'path';
 import multer from 'multer';
 import User from '../model/user';
 import dbConnection from '../util/db_con';
-import { findAllUser, findAllRecord, findRecordByUsers } from '../util/sequelize/api/find'
+import {
+  findAllUser,
+  findAllRecord,
+  findRecordByUsers,
+  saveRecord, 
+}  from '../util/sequelize/api/find'
 
 let router = express.Router();
 const database = dbConnection().init();
@@ -79,6 +84,10 @@ router.get('/records/who', async(req, res, next) => {
 */
 router.post('/record', upload.any(), async(req, res, next) => {
   console.log(333, req.files);
+  await saveRecord(req.query.from, req.query.to)
+  .then((res) => {
+    return res;
+  })
   
   res.json({"200": "success"});
 })
