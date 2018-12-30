@@ -7,10 +7,14 @@ const User = config().define('User', {
     primaryKey: true,
     autoIncrement: true
   },
-  name: {
+  email: {
     type: Sequelize.STRING,
     allowNull: false,
     unique: true
+  },
+  status: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
   }
 });
 

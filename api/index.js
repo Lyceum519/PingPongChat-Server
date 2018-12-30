@@ -9,6 +9,10 @@ import {
   findRecordByUsers,
   saveRecord, 
 }  from '../util/sequelize/api/find'
+import {
+  signIn,
+  signOut
+} from '../util/sequelize/api/auth'
 
 let router = express.Router();
 const database = dbConnection().init();
@@ -86,11 +90,45 @@ router.post('/record', upload.any(), async(req, res, next) => {
   console.log(333, req.files);
   await saveRecord(req.query.from, req.query.to)
   .then((res) => {
+    res.status(200);
     return res;
   })
-  
-  res.json({"200": "success"});
+  .catch((err) => {
+    res.json(err);
+    return err;
+  });
 })
 
+/*
+  Sign In
+  change login status to 1
+*/
+router.post('/signin', async(req, res, next) => {
+  const email = req.body.email;
+  await signIn(email)
+  .then((user) => {
+    res.sendStatus(200);
+    return user;
+  })
+  .catch((err) => {
+    return err;
+  });
+})
+
+/*
+  Sign Out
+  change login status to 0
+*/
+router.post('/signout', async(req, res, next) => {
+  const email = req.body.email;
+  await signOut(email)
+  .then((user) => {
+    res.sendStatus(200);
+    return user;
+  })
+  .catch((err) => {
+    return err;
+  });
+})
 
 export default router;

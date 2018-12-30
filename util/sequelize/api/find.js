@@ -54,5 +54,4 @@ export function saveRecord(from, to) {
       })
     }
   })
-
 }
