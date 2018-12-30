@@ -6,12 +6,19 @@ const path = require('path');
 User.sync({force: true}).then(() => {
   // Table created
   // return User.create({
-  //   name: 'wonyeong',
+  //   email: 'wonyeong',
+  //   status: '0',
   // });
 
   return User.bulkCreate([
-    { name: 'wonyeong' },
-    { name: 'minwoo' },
+    {
+      email: 'wonyeong91@gmail.com',
+      status: 0,
+    },
+    {
+      email: 'minwoo@gmail.com',
+      status: 0,
+    },
   ])
 });
 
