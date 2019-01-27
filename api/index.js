@@ -106,16 +106,18 @@ router.post('/record', upload.any(), async(req, res, next) => {
 router.post('/signin', async(req, res, next) => {
   const email = req.body.email;
   const token = req.body.token;
-  await signIn(email, token)
-  .then((user) => {
-    res.sendStatus(200);
-    console.log(user);
-    return user;
-  })
-  .catch((err) => {
-    console.log(err);
-    return err;
-  });
+  const signInResult = {
+    result
+      : await signIn(email, token)
+      .then((user) => {
+        return user;
+      })
+      .catch((err) => {
+        console.log(err);
+        return err;
+      })
+  };
+  return res.json([signInResult]);
 })
 
 /*
@@ -125,14 +127,18 @@ router.post('/signin', async(req, res, next) => {
 router.post('/signout', async(req, res, next) => {
   const email = req.body.email;
   const token = req.body.token;
-  await signOut(email, token)
-  .then((user) => {
-    res.sendStatus(200);
-    return user;
-  })
-  .catch((err) => {
-    return err;
-  });
+  const signOutResult = {
+    result
+      : await signOut(email, token)
+      .then((user) => {
+        res.sendStatus(200);
+        return user;
+      })
+      .catch((err) => {
+        return err;
+      })
+  };
+  return res.json([signOutResult])
 })
 
 export default router;

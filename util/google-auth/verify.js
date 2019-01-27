@@ -1,5 +1,5 @@
 import {OAuth2Client} from 'google-auth-library';
-const CLIENT_ID = '54618363609-juc0jd4ckgct0ndmfp1emritcu38bliv.apps.googleusercontent.com';
+const CLIENT_ID = '54618363609-gf6br8b3i3jvs5c7fjc0asdfum969m3u.apps.googleusercontent.com';
 const client = new OAuth2Client(CLIENT_ID);
 export default async function verify(token) {
   const ticket = await client.verifyIdToken({
