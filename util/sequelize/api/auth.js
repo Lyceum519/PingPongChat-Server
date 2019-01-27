@@ -1,6 +1,8 @@
 import verify from '../../google-auth/verify';
 
 const User = require('../model/user');
+const SUCCESS = "success";
+const FAIL = "fail";
 
 export function signIn(email, token) {
   // verify token
@@ -20,7 +22,7 @@ export function signIn(email, token) {
             email : email,
           }
         }).then((user) => {
-          return user;
+          return SUCCESS;
         }).catch((err) => {
           return err;
         });
@@ -31,7 +33,7 @@ export function signIn(email, token) {
           email: email,
           status: 1,
         }).then((user) => {
-          return user;
+          return SUCCESS;
         }).catch((err) => {
           return err;
         });
@@ -53,7 +55,7 @@ export function signOut(email, token) {
       email: email,
     }
   }).then((user) => {
-    return user;
+    return SUCCESS;
   }).catch((err) => {
     console.log("signOut failed: " + err);
     return err;
