@@ -133,7 +133,6 @@ router.post('/signout', async(req, res, next) => {
     result
       : await signOut(email, token)
       .then((user) => {
-        res.sendStatus(200);
         return user;
       })
       .catch((err) => {
