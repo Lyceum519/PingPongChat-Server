@@ -13,10 +13,14 @@ User.sync({force: true}).then(() => {
   return User.bulkCreate([
     {
       email: 'wonyeong91@gmail.com',
+      name: 'wonyeong',
+      photo: '',
       status: 0,
     },
     {
       email: 'minwoo@gmail.com',
+      name: 'minwoo',
+      photo: '',
       status: 0,
     },
   ])

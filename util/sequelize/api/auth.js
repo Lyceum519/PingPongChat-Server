@@ -4,7 +4,7 @@ const User = require('../model/user');
 const SUCCESS = "success";
 const FAIL = "fail";
 
-export function signIn(email, token) {
+export function signIn(email, name, photo, token) {
   // verify token
   return verify(token).then(() => {
     return User.count({
@@ -15,6 +15,8 @@ export function signIn(email, token) {
       // update user
       if (count !== 0) {
         return User.update({
+          name: name,
+          photo: photo,
           status: 1,
         },
         {
@@ -31,6 +33,8 @@ export function signIn(email, token) {
       else {
         return User.create({
           email: email,
+          name: name,
+          photo: photo,
           status: 1,
         }).then((user) => {
           return SUCCESS;
