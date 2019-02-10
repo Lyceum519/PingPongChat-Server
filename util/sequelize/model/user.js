@@ -5,16 +5,31 @@ const User = config().define('User', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
   },
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
+    unique: true,
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  photo: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: false,
   },
   status: {
     type: Sequelize.INTEGER,
     allowNull: false,
+  },
+  token: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    unieque: false,
   }
 });
 

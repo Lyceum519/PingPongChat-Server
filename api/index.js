@@ -105,10 +105,12 @@ router.post('/record', upload.any(), async(req, res, next) => {
 */
 router.post('/signin', async(req, res, next) => {
   const email = req.body.email;
-  const token = req.body.token;
+  const name = req.body.name;
+  const photo = req.body.photo;
+  const token = req.body.token; 
   const signInResult = {
     result
-      : await signIn(email, token)
+      : await signIn(email, name, photo, token)
       .then((user) => {
         return user;
       })
