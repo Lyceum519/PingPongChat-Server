@@ -15,7 +15,7 @@ const User = config().define('User', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true,
+    unique: false,
   },
   photo: {
     type: Sequelize.STRING,
