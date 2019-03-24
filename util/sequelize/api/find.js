@@ -25,7 +25,7 @@ export function findRecordByUsers(from, to) {
 }
 
 export function saveRecord(from, to) {
-  Record.count({
+  return Record.count({
     where: {
       from: from,
       to: to,
@@ -53,5 +53,20 @@ export function saveRecord(from, to) {
         return records;
       })
     }
+  }).catch((err) => {
+    console.log(err);
+  })
+}
+
+export function getFcmToken(email) {
+  return User.findOne({
+    where: {
+      email: email,
+    }
+  }).then((user) => {
+    console.log("user fcm token: ", user.get('fcm_token'))
+    return user.get('fcm_token');
+  }).catch((err) => {
+    console.log(err);
   })
 }

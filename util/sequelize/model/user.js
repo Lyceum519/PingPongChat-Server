@@ -30,6 +30,11 @@ const User = config().define('User', {
     type: Sequelize.STRING,
     allowNull: true,
     unieque: false,
+  },
+  fcm_token: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    unieque: false,
   }
 });
 

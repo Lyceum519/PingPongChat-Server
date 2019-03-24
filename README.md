@@ -5,7 +5,7 @@ PingPonChat-Server is a backend of PingPongChat project using Node.js
 
 * [Support](#support)
 * [Building](#building)
-  * [Configurate Database](#configurate-database)
+  * [Configure Database](#configure-database)
 * [Release](#release)
 * [API Documentation](#api-documentation)
 * [Current Project Team Members](#current-project-team-members)
@@ -26,7 +26,7 @@ your expectations.
 
 ## Building
 
-Prerequesite.
+Prerequisite.
 
 - Node.js
 - NPM (or yarn)
@@ -42,7 +42,7 @@ Install package in root directory of project.
 $ yarn install 
 ```
 
-Before start server you should *[configurate your database](#configurate-database)
+Before start server you should *[configure your database](#configure-database)
 
 Start server (default running port is 7001)
 ``` console
@@ -50,7 +50,7 @@ $ yarn start
 ```
 
 
-## Configurate Database
+## Configure Database
 
 This project Use Mysql for database. Mysql version 5.x or 8.x recommended.
 
@@ -81,6 +81,7 @@ Documentation will be given in later.
 ## Current Project Team Members
 
 UnoRich (wonyeong91@gmail.com)
+
 Alsdn733 (alsdn733@gmail.com)
 
 ## Contributing to PingPongChat-Server

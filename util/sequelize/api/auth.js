@@ -4,7 +4,7 @@ const User = require('../model/user');
 const SUCCESS = "success";
 const FAIL = "fail";
 
-export function signIn(email, name, photo, token) {
+export function signIn(email, name, photo, token, fcmToken) {
   // verify token
   return verify(token).then(() => {
     return User.count({
@@ -18,6 +18,7 @@ export function signIn(email, name, photo, token) {
           name: name,
           photo: photo,
           status: 1,
+          fcm_token: fcmToken,
         },
         {
           where: {
@@ -36,6 +37,7 @@ export function signIn(email, name, photo, token) {
           name: name,
           photo: photo,
           status: 1,
+          fcm_token: fcmToken,
         }).then((user) => {
           return SUCCESS;
         }).catch((err) => {
