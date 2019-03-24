@@ -16,12 +16,14 @@ User.sync({force: true}).then(() => {
       name: 'wonyeong',
       photo: '',
       status: 0,
+      fcm_token: "default",
     },
     {
       email: 'minwoo@gmail.com',
       name: 'minwoo',
       photo: '',
       status: 0,
+      fcm_token: "default",
     },
   ])
 });

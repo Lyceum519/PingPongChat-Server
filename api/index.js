@@ -13,6 +13,9 @@ import {
   signIn,
   signOut
 } from '../util/sequelize/api/auth'
+import {
+  requestPush
+} from './fcm-push'
 
 let router = express.Router();
 const database = dbConnection().init();
@@ -87,7 +90,7 @@ router.get('/records/who', async(req, res, next) => {
   Post record 
 */
 router.post('/record', upload.any(), async(req, res, next) => {
-  console.log(333, req.files);
+  console.log("record post data: ", req.files);
   await saveRecord(req.query.from, req.query.to)
   .then((res) => {
     res.status(200);
@@ -108,9 +111,10 @@ router.post('/signin', async(req, res, next) => {
   const name = req.body.name;
   const photo = req.body.photo;
   const token = req.body.token; 
+  const fcmToken = req.body.client_token;
   const signInResult = {
     result
-      : await signIn(email, name, photo, token)
+      : await signIn(email, name, photo, token, fcmToken)
       .then((user) => {
         return user;
       })
@@ -143,3 +147,15 @@ router.post('/signout', async(req, res, next) => {
 })
 
 export default router;
+
+/*
+  FCM push API
+  request push notification to FCM
+*/
+router.post('/push_data', async(req, res, next) => {
+  const pushData = req.body;
+  console.log("push_data api data: ", pushData)
+  const requestPushResult = [await requestPush(pushData)];
+  console.log("push_data api result: ", requestPushResult)
+  return res.json(requestPushResult);
+})
