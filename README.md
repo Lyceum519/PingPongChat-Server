@@ -81,7 +81,6 @@ Documentation will be given in later.
 ## Current Project Team Members
 
 UnoRich (wonyeong91@gmail.com)
-
 Alsdn733 (alsdn733@gmail.com)
 
 ## Contributing to PingPongChat-Server
