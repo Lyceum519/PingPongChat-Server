@@ -1,3 +1,4 @@
+import fs from 'fs';
 import express from 'express';
 import path from 'path';
 import multer from 'multer';
@@ -19,6 +20,8 @@ import {
 
 let router = express.Router();
 const database = dbConnection().init();
+
+fs.existsSync(__dirname + '/../uploads') || fs.mkdirSync(__dirname + '/../uploads');
 
 /*
  file storage
