@@ -80,3 +80,6 @@ typings/
 
 # Audio files
 uploads/
+
+# DS Store file
+.DS_Store
